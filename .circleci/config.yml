@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Make build directory
+          name: Make build directory for zipping 
           command: mkdir /tmp/workspace
       - run:
           name: Copy dist to the workspace directory
