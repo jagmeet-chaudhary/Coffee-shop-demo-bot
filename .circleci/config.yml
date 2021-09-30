@@ -20,8 +20,14 @@ jobs:
           name: zip the folder
           command: zip -r Coffee-Shop.zip /tmp/workspace/Coffee-Shop
       - run:
-          name: list files
+          name: list files in scripts folder 
           command: ls /tmp/workspace/scripts/
+      - run:
+          name: list files in coffee-shop folder 
+          command: ls /tmp/workspace/Coffee-Shop/
+      - run:
+          name: list files in root folder 
+          command: ls /tmp/workspace/
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
