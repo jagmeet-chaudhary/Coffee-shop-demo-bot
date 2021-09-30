@@ -50,6 +50,6 @@ workflows:
       - deploy:
           requires:
             - zip
-          filters:
-            branches:
-              only: master
+#          filters:
+#            branches:
+#              only: master
