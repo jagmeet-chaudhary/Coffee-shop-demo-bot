@@ -18,7 +18,7 @@ jobs:
           command: cp -r scripts /tmp/workspace/scripts
       - run:
           name: zip the folder
-          command: zip -r /tmp/workspace/Coffee-Shop/Coffee-Shop.zip /tmp/workspace/Coffee-Shop/Coffee-Shop
+          command: zip -r Coffee-Shop.zip /tmp/workspace/Coffee-Shop/Coffee-Shop
       - run:
           name: list files
           command: ls /tmp/workspace/scripts/
