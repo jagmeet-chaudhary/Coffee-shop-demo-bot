@@ -18,7 +18,7 @@ jobs:
           command: cp -r scripts /tmp/workspace/scripts
       - run:
           name: zip the folder
-          command: zip -r Coffee-Shop.zip /tmp/workspace/Coffee-Shop
+          command: zip -r /tmp/workspace/Coffee-Shop.zip /tmp/workspace/Coffee-Shop
       - run:
           name: list files in scripts folder 
           command: ls /tmp/workspace/scripts/
@@ -31,9 +31,8 @@ jobs:
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - Coffee-Shop.zip
-            - scripts
-           
+            - /tmp/workspace
+         
   deploy:
     docker:
       - image: google/cloud-sdk
