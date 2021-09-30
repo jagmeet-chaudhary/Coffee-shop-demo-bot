@@ -19,6 +19,9 @@ jobs:
       - run:
           name: zip the folder
           command: zip -r Coffee-Shop.zip Coffee-Shop
+      - run:
+          name: list files
+          command: ls /tmp/workspace/scripts/
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -33,9 +36,7 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/workspace
-      - run:
-          name: list files
-          command: ls /tmp/workspace/scripts/
+
       - run:
           name: Initialize gcloud
           command: sh /tmp/workspace/scripts/authgcloud.sh
@@ -50,9 +51,9 @@ workflows:
   build_deploy:
     jobs:
       - zip
-      - deploy:
-          requires:
-            - zip
+#      - deploy:
+#          requires:
+#            - zip
 #          filters:
 #            branches:
 #              only: master
