@@ -51,9 +51,9 @@ workflows:
   build_deploy:
     jobs:
       - zip
-#      - deploy:
-#          requires:
-#            - zip
+      - deploy:
+          requires:
+           - zip
 #          filters:
 #            branches:
 #              only: master
