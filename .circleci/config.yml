@@ -21,7 +21,7 @@ jobs:
           command: zip -r Coffee-Shop.zip Coffee-Shop
       - run:
           name: list files
-          command: ls /tmp/workspace/scripts/
+          command: ls /tmp/workspace/scripts/;ls /tmp/workspace/  
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
