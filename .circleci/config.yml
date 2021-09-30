@@ -38,7 +38,7 @@ jobs:
           command: ls /tmp/workspace/scripts/
       - run:
           name: Initialize gcloud
-          command: /tmp/workspace/scripts/authgcloud.sh
+          command: sh /tmp/workspace/scripts/authgcloud.sh
       - run:
           name: list files
           command: ls /tmp/workspace/
