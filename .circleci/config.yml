@@ -37,7 +37,7 @@ jobs:
     docker:
       - image: google/cloud-sdk
         environment:
-          STORAGE_BUCKET: dialog-flow-integration
+          STORAGE_BUCKET: dialog-flow-rules
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -52,7 +52,7 @@ jobs:
           command: ls /tmp/workspace/
       - run:
           name: deploy
-          command: /tmp/workspace/build/deploy.sh
+          command: sh /tmp/workspace/scripts/deploy.sh
 workflows:
   version: 2
   build_deploy:
