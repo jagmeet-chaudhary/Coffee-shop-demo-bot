@@ -37,7 +37,7 @@ jobs:
     docker:
       - image: google/cloud-sdk
         environment:
-          STORAGE_BUCKET: dialog-flow-integration
+          STORAGE_BUCKET: dialog-flow-rules
     steps:
       - attach_workspace:
           at: /tmp/workspace
