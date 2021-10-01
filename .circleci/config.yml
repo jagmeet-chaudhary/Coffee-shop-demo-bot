@@ -37,20 +37,22 @@ jobs:
     docker:
       - image: google/cloud-sdk
         environment:
-          STORAGE_BUCKET: dialog-flow-integration
+          STORAGE_BUCKET: dialog-flow-rules
     steps:
       - attach_workspace:
           at: /tmp/workspace
-
       - run:
-          name: Initialize gcloud
+          name: List contents of key file
+          command: cat /tmp/workspace/scripts/gcloud-service-key.json
+      - run:
+          name: Initialize gcloudls
           command: sh /tmp/workspace/scripts/authgcloud.sh
       - run:
           name: list files
           command: ls /tmp/workspace/
-#      - run:
-#          name: deploy
-#          command: /tmp/workspace/build/deploy.sh
+      - run:
+          name: deploy
+          command: sh /tmp/workspace/scripts/deploy.sh
 workflows:
   version: 2
   build_deploy:
