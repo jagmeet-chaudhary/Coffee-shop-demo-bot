@@ -45,7 +45,7 @@ jobs:
           name: List contents of key file
           command: cat /tmp/workspace/scripts/gcloud-service-key.json
       - run:
-          name: Initialize gcloud
+          name: Initialize gcloudls
           command: sh /tmp/workspace/scripts/authgcloud.sh
       - run:
           name: list files
