@@ -52,7 +52,7 @@ jobs:
           command: ls /tmp/workspace/
       - run:
           name: deploy
-          command: /tmp/workspace/scripts/deploy.sh
+          command: sh /tmp/workspace/scripts/deploy.sh
 workflows:
   version: 2
   build_deploy:
