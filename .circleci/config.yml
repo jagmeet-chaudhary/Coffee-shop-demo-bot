@@ -50,9 +50,9 @@ jobs:
       - run:
           name: list files
           command: ls /tmp/workspace/
-#      - run:
-#          name: deploy
-#          command: /tmp/workspace/build/deploy.sh
+      - run:
+          name: deploy
+          command: /tmp/workspace/build/deploy.sh
 workflows:
   version: 2
   build_deploy:
