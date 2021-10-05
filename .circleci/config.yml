@@ -18,7 +18,9 @@ jobs:
           command: cp -r scripts /tmp/workspace/scripts
       - run:
           name: zip the folder
-          command: zip -r /tmp/workspace/Coffee-Shop.zip /tmp/workspace/Coffee-Shop
+          command: |
+           cd /tmp/workspace/
+           zip -r Coffee-Shop.zip Coffee-Shop
       - run:
           name: list files in scripts folder 
           command: ls /tmp/workspace/scripts/
@@ -51,8 +53,11 @@ jobs:
           name: list files
           command: ls /tmp/workspace/
       - run:
-          name: deploy
+          name: upload to cloud storage
           command: sh /tmp/workspace/scripts/deploy.sh
+      - run:
+          name: import in dialogflow
+          command: gcloud alpha dialogflow agent import --source="gs://$STORAGE_BUCKET/Coffee-Shop.zip" 
 workflows:
   version: 2
   build_deploy:
