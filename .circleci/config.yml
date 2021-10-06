@@ -21,15 +21,6 @@ jobs:
           command: |
            cd /tmp/workspace/
            zip -r Coffee-Shop.zip Coffee-Shop
-      - run:
-          name: list files in scripts folder 
-          command: ls /tmp/workspace/scripts/
-      - run:
-          name: list files in coffee-shop folder 
-          command: ls /tmp/workspace/Coffee-Shop/
-      - run:
-          name: list files in root folder 
-          command: ls /tmp/workspace/
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -44,17 +35,16 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: List contents of key file
-          command: cat /tmp/workspace/scripts/gcloud-service-key.json
+          name: Initialize gcloudls
+          command: |
+                  gcloud auth activate-service-account --key-file=/tmp/workspace/scripts/gcloud-service-key.json 
+                  gcloud --quiet config set project ${GOOGLE_PROJECT_ID} 
       - run:
           name: Initialize gcloudls
-          command: sh /tmp/workspace/scripts/authgcloud.sh
-      - run:
-          name: list files
-          command: ls /tmp/workspace/
+          command: gsutil ls -b gs://$STORAGE_BUCKET || gsutil mb  gs://$STORAGE_BUCKET
       - run:
           name: upload to cloud storage
-          command: sh /tmp/workspace/scripts/deploy.sh
+          command: gsutil cp  /tmp/workspace/Coffee-Shop.zip gs://$STORAGE_BUCKET
       - run:
           name: import in dialogflow
           command: gcloud alpha dialogflow agent import --source="gs://$STORAGE_BUCKET/Coffee-Shop.zip" 
