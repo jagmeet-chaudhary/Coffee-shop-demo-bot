@@ -21,7 +21,7 @@ jobs:
           command: |
            cd /tmp/workspace/
            zip -r Coffee-Shop.zip Coffee-Shop
-        - persist_to_workspace:
+      - persist_to_workspace:
           root: /tmp/workspace
           paths:
             - .
@@ -37,8 +37,8 @@ jobs:
       - run:
           name: Initialize gcloudls
           command: |
-          gcloud auth activate-service-account --key-file=/tmp/workspace/scripts/gcloud-service-key.json
-          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+                  gcloud auth activate-service-account --key-file=/tmp/workspace/scripts/gcloud-service-key.json 
+                  gcloud --quiet config set project ${GOOGLE_PROJECT_ID} 
       - run:
           name: Initialize gcloudls
           command: gsutil ls -b gs://$STORAGE_BUCKET || gsutil mb  gs://$STORAGE_BUCKET
